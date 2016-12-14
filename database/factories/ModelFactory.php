@@ -29,7 +29,17 @@ $factory->define(CodeDelivery\Models\Category::class, function (Faker\Generator 
 $factory->define(CodeDelivery\Models\Product::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
-        'price' => $faker->numberBetween(10,50),
+        'price' => $faker->numberBetween(10, 50),
         'description' => $faker->text
+    ];
+});
+
+$factory->define(CodeDelivery\Models\Client::class, function (Faker\Generator $faker) {
+    return [
+        'phone' => $faker->phoneNumber,
+        'address' => $faker->address,
+        'city' => $faker->city,
+        'state' => $faker->state,
+        'zipcode' => $faker->postcode
     ];
 });
