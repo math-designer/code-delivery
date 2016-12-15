@@ -17,7 +17,7 @@ class User extends Model implements Transformable,
                                     AuthorizableContract,
                                     CanResetPasswordContract
 {
-    use use TransformableTrait, Authenticatable, Authorizable, CanResetPassword;
+    use TransformableTrait, Authenticatable, Authorizable, CanResetPassword;
 
     /**
      * The database table used by the model.
