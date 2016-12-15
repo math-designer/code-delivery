@@ -149,6 +149,7 @@ return [
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         
         Bestmomo\Scafold\ScafoldServiceProvider::class,
+        Bestmomo\NiceArtisan\NiceArtisanServiceProvider::class,
 
     ],
 

@@ -4,9 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "61a21700945aea5af47e2a686274497f",
-    "content-hash": "13bedf72f5d809bb4d53fd060060af2d",
+    "hash": "af9b9d7d7bbbe83ab2e462d8cc0898dd",
+    "content-hash": "4a3577914c0ba707962099b2386d9e10",
     "packages": [
+        {
+            "name": "bestmomo/nice-artisan",
+            "version": "v0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bestmomo/nice-artisan.git",
+                "reference": "2d2e2804ac7a5b3dbcefe388f9cb2b4a8a2d4585"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bestmomo/nice-artisan/zipball/2d2e2804ac7a5b3dbcefe388f9cb2b4a8a2d4585",
+                "reference": "2d2e2804ac7a5b3dbcefe388f9cb2b4a8a2d4585",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.1",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Bestmomo\\NiceArtisan\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bestmomo",
+                    "email": "grandheretique@free.fr",
+                    "homepage": "http://laravel.sillo.org"
+                }
+            ],
+            "description": "Web interface for Laravel Artisan",
+            "homepage": "http://github.com/bestmomo/nice-artisan",
+            "time": "2015-11-20 15:42:45"
+        },
         {
             "name": "bestmomo/scafold",
             "version": "V1.0.0",
