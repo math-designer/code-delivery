@@ -144,6 +144,8 @@ return [
         CodeDelivery\Providers\AuthServiceProvider::class,
         CodeDelivery\Providers\EventServiceProvider::class,
         CodeDelivery\Providers\RouteServiceProvider::class,
+        
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
 
     ],
 
