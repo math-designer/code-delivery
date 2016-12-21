@@ -9,13 +9,12 @@ use CodeDelivery\Models\Product;
 use CodeDelivery\Validators\ProductValidator;
 
 /**
- * Class ProductRepositoryEloquent
- * @package namespace CodeDelivery\Repositories;
+ * Class ProductRepositoryEloquent.
  */
 class ProductRepositoryEloquent extends BaseRepository implements ProductRepository
 {
     /**
-     * Specify Model class name
+     * Specify Model class name.
      *
      * @return string
      */
@@ -24,10 +23,8 @@ class ProductRepositoryEloquent extends BaseRepository implements ProductReposit
         return Product::class;
     }
 
-    
-
     /**
-     * Boot up the repository, pushing criteria
+     * Boot up the repository, pushing criteria.
      */
     public function boot()
     {
