@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h3>Categories</h3>
+                <h3>Categorias</h3>
                 <br>
                 <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">Nova Categoria</a>
                 <table class="table table-bordered table-hover">
@@ -20,7 +20,7 @@
                             <tr>
                                 <td>{{$category->id}}</td>
                                 <td>{{$category->name}}</td>
-                                <td></td>
+                                <td><a class="btn btn-default btn-sm" href="{{ route('admin.categories.edit', $category->id) }}">Editar</a></td>
                             </tr>
                         @endforeach
                     </tbody>
