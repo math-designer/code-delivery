@@ -6,20 +6,9 @@
             <div class="col-md-12">
                 <h3>Nova Categoria</h3>
                 <div class="col-md-6">
-                    @if($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                    @include('errors._check')
                     {!! Form::open(['route' => 'admin.categories.store']) !!}
-                        <div class="form-group">
-                            {!! Form::label('name', 'Nome:') !!}
-                            {!! Form::text('name', null, ['class' => 'form-control']) !!}
-                        </div>
+                        @include('admin.categories._form')
                         <div class="form-group">
                             {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
                         </div>
