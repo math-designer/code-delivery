@@ -33,8 +33,10 @@
 
 			<div class="collapse navbar-collapse" id="navbar">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ route('admin.categories.index') }}">Categorias</a></li>
-					<li><a href="{{ route('admin.products.index') }}">Produtos</a></li>
+					@if(!auth()->guest())
+						<li><a href="{{ route('admin.categories.index') }}">Categorias</a></li>
+						<li><a href="{{ route('admin.products.index') }}">Produtos</a></li>
+					@endif
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
