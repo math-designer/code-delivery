@@ -30,7 +30,7 @@ class ClientRequest extends Request
             'address' => 'required',
             'city' => 'required',
             'state' => 'required',
-            'zipcode' => 'required|min:5'
+            'zipcode' => 'required|size:5'
         ];
     }
 }
