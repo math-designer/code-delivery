@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth.checkrole'], function(){
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth.checkrole:admin'], function(){
 
     Route::group(['prefix' => 'categories', 'as' => 'categories.'], function(){
         Route::get('/', ['as' => 'index', 'uses' => 'CategoriesController@index']);
@@ -52,6 +52,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth.check
         Route::get('edit/{id}', ['as' => 'edit', 'uses' => 'OrdersController@edit']);
         Route::post('update/{id}', ['as' => 'update', 'uses' => 'OrdersController@update']);
     });
+
+    Route::group(['prefix' => 'cupons', 'as' => 'cupons.'], function(){
+        Route::get('/', ['as' => 'index', 'uses' => 'CuponsController@index']);
+        Route::get('create', ['as' => 'create', 'uses' => 'CuponsController@create']);
+        Route::post('store', ['as' => 'store', 'uses' => 'CuponsController@store']);
+    });
 });
 
+Route::group(['prefix' => 'costumer', 'as' => 'costumer.', 'middleware' => 'auth.checkrole:client'], function(){
+    Route::get('order/create', ['as' => 'order.create', 'uses' => 'CheckoutController@create']);
+    Route::post('order/store', ['as' => 'order.store', 'uses' => 'CheckoutController@store']);
+    Route::get('order/', ['as' => 'order.index', 'uses' => 'CheckoutController@index']);
+});
 
