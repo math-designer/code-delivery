@@ -46,7 +46,7 @@ $factory->define(CodeDelivery\Models\Client::class, function (Faker\Generator $f
 
 $factory->define(CodeDelivery\Models\Order::class, function (Faker\Generator $faker) {
     return [
-        'client_id' => rand(1,10),
+        'client_id' => rand(1, 10),
         'total' => rand(50, 100),
         'status' => 0
     ];
@@ -64,5 +64,13 @@ $factory->define(CodeDelivery\Models\Cupom::class, function (Faker\Generator $fa
     return [
         'code' => rand(100, 1000),
         'value' => rand(50, 100)
+    ];
+});
+
+$factory->define(CodeDelivery\Models\OauthClient::class, function (Faker\Generator $faker) {
+    return [
+        'id' => 'appid01',
+        'secret' => 'secret',
+        'name' => 'Minha App Mobile'
     ];
 });
