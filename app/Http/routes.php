@@ -78,4 +78,8 @@ Route::group(['prefix' => 'api', 'as' => 'api.', 'middleware' => 'oauth'], funct
     Route::group(['prefix' => 'deliveryman', 'as' => 'deliveryman.', 'middleware' => 'oauth2.checkrole:deliveryman'], function () {
 
     });
+
+    Route::get('authenticated', function (\CodeDelivery\Repositories\UserRepository $userRepository) {
+        return $userRepository->find(Authorizer::getResourceOwnerId());
+    });
 });
