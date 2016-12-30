@@ -71,7 +71,11 @@ Route::post('oauth/access_token', function () {
 });
 
 Route::group(['prefix' => 'api', 'as' => 'api.', 'middleware' => 'oauth'], function () {
-    Route::get('teste', function () {
-        return 'teste';
+    Route::group(['prefix' => 'client', 'as' => 'client.', 'middleware' => 'oauth2.checkrole:client'], function () {
+        Route::resource('order', 'Api\Client\CheckoutController', ['except' => ['create', 'edit', 'destroy']]);
+    });
+
+    Route::group(['prefix' => 'deliveryman', 'as' => 'deliveryman.', 'middleware' => 'oauth2.checkrole:deliveryman'], function () {
+
     });
 });
