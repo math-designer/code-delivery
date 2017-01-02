@@ -3,11 +3,11 @@
 namespace CodeDelivery\Http\Controllers\Api\Client;
 
 use CodeDelivery\Http\Controllers\Controller;
+use CodeDelivery\Http\Requests\CheckoutRequest;
 use CodeDelivery\Repositories\OrderRepository;
 use CodeDelivery\Repositories\ProductRepository;
 use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\Services\OrderService;
-use Illuminate\Http\Request;
 use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 
 class CheckoutController extends Controller
@@ -36,14 +36,7 @@ class CheckoutController extends Controller
         return $orders;
     }
 
-    public function create()
-    {
-        $products = $this->productRepository->all(['id', 'name', 'price']);
-
-        return view('costumer.order.create', compact('products'));
-    }
-
-    public function store(Request $request)
+    public function store(CheckoutRequest $request)
     {
         $data = $request->all();
         $clientId = $this->userRepository->find(Authorizer::getResourceOwnerId())->client->id;
