@@ -6,6 +6,7 @@ namespace CodeDelivery\Services;
 use CodeDelivery\Repositories\CupomRepository;
 use CodeDelivery\Repositories\OrderRepository;
 use CodeDelivery\Repositories\ProductRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class OrderService
 {
@@ -74,5 +75,19 @@ class OrderService
         }
 
 
+    }
+
+    public function updateStatus($id, $idDeliveryman, $status)
+    {
+        $order = $this->orderRepository->getByDeliveryman($id, $idDeliveryman);
+        $order->status = $status;
+
+        if ($order) {
+            $order->status = $status;
+            $order->save();
+            return $order;
+        }
+
+        return false;
     }
 }

@@ -1,14 +1,15 @@
 <?php
 
-namespace CodeDelivery\Http\Controllers\Api\Client;
+namespace CodeDelivery\Http\Controllers\Api\Deliveryman;
 
 use CodeDelivery\Http\Controllers\Controller;
+use \Illuminate\Http\Request;
 use CodeDelivery\Repositories\OrderRepository;
 use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\Services\OrderService;
 use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 
-class DeliverymanController extends Controller
+class DeliverymanCheckoutController extends Controller
 {
     private $orderRepository;
     private $userRepository;
@@ -41,10 +42,17 @@ class DeliverymanController extends Controller
 
     public function show($id)
     {
-        $order = $this->orderRepository->with(['items', 'client', 'cupom'])->find($id);
-        $order->items->each(function ($item) {
-            $item->product;
-        });
-        return $order;
+        return $this->orderRepository->getByDeliveryman($id, Authorizer::getResourceOwnerId());
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $order = $this->orderService->updateStatus($id, Authorizer::getResourceOwnerId(), $request->status);
+        if ($order) {
+            return $order;
+        }
+
+        abort(400, 'Order not found');
+
     }
 }

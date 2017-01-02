@@ -76,7 +76,8 @@ Route::group(['prefix' => 'api', 'as' => 'api.', 'middleware' => 'oauth'], funct
     });
 
     Route::group(['prefix' => 'deliveryman', 'as' => 'deliveryman.', 'middleware' => 'oauth2.checkrole:deliveryman'], function () {
-
+        Route::resource('order', 'Api\Deliveryman\DeliverymanCheckoutController', ['except' => ['create', 'edit', 'destroy', 'store']]);
+        Route::patch('order/update-status/{id}', ['as' => 'order.update-status', 'uses' => 'Api\Deliveryman\DeliverymanCheckoutController@updateStatus']);
     });
 
     Route::get('authenticated', function (\CodeDelivery\Repositories\UserRepository $userRepository) {
