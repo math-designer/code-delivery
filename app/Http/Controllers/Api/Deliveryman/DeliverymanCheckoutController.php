@@ -15,6 +15,8 @@ class DeliverymanCheckoutController extends Controller
     private $userRepository;
     private $orderService;
 
+    private $with = ['items', 'client', 'cupom'];
+
     public function __construct(OrderRepository $orderRepository, UserRepository $userRepository, OrderService $orderService)
     {
 
@@ -25,7 +27,7 @@ class DeliverymanCheckoutController extends Controller
 
     public function index()
     {
-        $orders = $this->orderRepository->with('items')->scopeQuery(function ($query) {
+        $orders = $this->orderRepository->skipPresenter(false)->with($this->with)->scopeQuery(function ($query) {
             return $query->where('user_deliveryman_id', '=', Authorizer::getResourceOwnerId());
         })->paginate();
 
@@ -42,14 +44,14 @@ class DeliverymanCheckoutController extends Controller
 
     public function show($id)
     {
-        return $this->orderRepository->getByDeliveryman($id, Authorizer::getResourceOwnerId());
+        return $this->orderRepository->skipPresenter(false)->getByDeliveryman($id, Authorizer::getResourceOwnerId());
     }
 
     public function updateStatus(Request $request, $id)
     {
         $order = $this->orderService->updateStatus($id, Authorizer::getResourceOwnerId(), $request->status);
         if ($order) {
-            return $order;
+            return $this->orderRepository->find($order->id);
         }
 
         abort(400, 'Order not found');
