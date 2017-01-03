@@ -14,19 +14,20 @@ class ClientTransformer extends TransformerAbstract
 
     /**
      * Transform the \Client entity
-     * @param \Client $model
+     * @param Client $model
      *
      * @return array
      */
     public function transform(Client $model)
     {
         return [
-            'id'         => (int) $model->id,
-
-            /* place your other model properties here */
-
-            'created_at' => $model->created_at,
-            'updated_at' => $model->updated_at
+            'name' => $model->name,
+            'email' => $model->email,
+            'phone' => $model->phone,
+            'adress' => $model->adress,
+            'zipcode' => $model->zipcode,
+            'city' => $model->city,
+            'state' => $model->state
         ];
     }
 }

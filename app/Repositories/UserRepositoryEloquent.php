@@ -2,11 +2,11 @@
 
 namespace CodeDelivery\Repositories;
 
-use Prettus\Repository\Eloquent\BaseRepository;
-use Prettus\Repository\Criteria\RequestCriteria;
-use CodeDelivery\Repositories\UserRepository;
 use CodeDelivery\Models\User;
+use CodeDelivery\Presenters\UserPresenter;
 use CodeDelivery\Validators\UserValidator;
+use Prettus\Repository\Criteria\RequestCriteria;
+use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class UserRepositoryEloquent
@@ -37,5 +37,10 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     public function getDeliverymen()
     {
         return $this->model->where('role', '=', 'deliveryman')->lists('name', 'id');
+    }
+
+    public function presenter()
+    {
+        return UserPresenter::class;
     }
 }
