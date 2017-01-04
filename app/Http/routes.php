@@ -81,6 +81,6 @@ Route::group(['prefix' => 'api', 'as' => 'api.', 'middleware' => 'oauth'], funct
     });
 
     Route::get('authenticated', function (\CodeDelivery\Repositories\UserRepository $userRepository) {
-        return $userRepository->find(Authorizer::getResourceOwnerId());
+        return $userRepository->skipPresenter(false)->find(Authorizer::getResourceOwnerId());
     });
 });

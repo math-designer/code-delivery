@@ -14,6 +14,9 @@ use Prettus\Repository\Eloquent\BaseRepository;
  */
 class UserRepositoryEloquent extends BaseRepository implements UserRepository
 {
+
+    protected $skipPresenter = true;
+
     /**
      * Specify Model class name
      *
